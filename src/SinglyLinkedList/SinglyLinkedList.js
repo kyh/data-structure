@@ -37,9 +37,9 @@ export default class SinglyList {
   findNode(position) {
     const listSize = this.length;
     let currentNode = this.head;
-    let count = 0;
+    let count = 1;
 
-    if (!listSize || // List has no length
+    if (listSize === 0 || // List has no length
         position < 1 || // position is not valid
         position > listSize // position is larger than list size
       ) {
@@ -61,7 +61,7 @@ export default class SinglyList {
     let nodeToDelete;
 
     // 1st case: Invalid position
-    if (!listSize ||
+    if (listSize === 0 ||
         position < 1 ||
         position > listSize
       ) {
@@ -87,9 +87,8 @@ export default class SinglyList {
     }
 
     previousNode.next = nodeToDelete.next;
-    nodeToDelete = null;
     this.length--;
 
-    return this;
+    return nodeToDelete;
   }
 }
