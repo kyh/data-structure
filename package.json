@@ -4,7 +4,7 @@
   "description": "Data structures implemented in JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "mocha-webpack --webpack-config webpack.config-test.js \"src/**/*.test.js\""
+    "test": "mocha-webpack --colors --webpack-config webpack.config-test.js \"src/**/*.test.js\""
   },
   "keywords": [
     "data",
