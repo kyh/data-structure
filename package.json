@@ -8,9 +8,11 @@
     "clean": "rm -rf .tmp",
     "test:stack": "mocha-webpack --growl \"src/Stack/stack.test.js\"",
     "test:queue": "mocha-webpack --growl \"src/Queue/queue.test.js\"",
-    "test:singly": "mocha-webpack --growl \"src/SinglyLinkedList/singly.test.js\""
+    "test:singly": "mocha-webpack --growl \"src/SinglyLinkedList/singly.test.js\"",
+    "test:doubly": "mocha-webpack --growl \"src/DoublyLinkedList/doubly.test.js\""
   },
   "keywords": [
+    "JavaScript",
     "data",
     "structures"
   ],
