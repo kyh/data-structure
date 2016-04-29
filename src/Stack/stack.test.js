@@ -1,11 +1,11 @@
 import { expect } from 'chai';
 import Stack from './Stack';
 
-describe('Stack data structure', () => {
+describe('Data structure: Stack', () => {
   let stack;
 
   // runs before each test in this block
-  beforeEach(function() {
+  beforeEach(() => {
     stack = new Stack();
   });
 
