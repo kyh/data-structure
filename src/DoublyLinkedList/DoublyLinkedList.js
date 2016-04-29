@@ -16,13 +16,13 @@ export default class SinglyList {
   findNode(position) {
     const length = this.length;
     let currentNode = this.head;
-    let count = 0;
+    let count = 1;
 
-    if (length === 0 || position > this.length || position < 1) {
+    if (length === 0 || position > length || position < 1) {
       throw new Error('Failure: non existent node in this list');
     }
 
-    while (position < count) {
+    while (count < position) {
       currentNode = currentNode.next;
       count++;
     }
@@ -34,7 +34,7 @@ export default class SinglyList {
     const node = new Node(data);
 
     // If a list is empty, then assign to its head and tail the node being added
-    if (!this.length) {
+    if (this.length === 0) {
       this.head = node;
       this.tail = node;
     } else {
@@ -48,10 +48,10 @@ export default class SinglyList {
     return this;
   }
 
-  remove(position) {
+  removeNode(position) {
     const length = this.length;
     let currentNode = this.head;
-    let count = 0;
+    let count = 1;
 
     // 1st case: Invalid position
     if (position > length ||
@@ -86,11 +86,10 @@ export default class SinglyList {
 
       previousNode.next = nextNode;
       nextNode.previous = previousNode;
-      currentNode = null;
     }
 
     this.length--;
 
-    return this;
+    return currentNode;
   }
 }
