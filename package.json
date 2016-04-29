@@ -4,7 +4,10 @@
   "description": "Data structures implemented in JavaScript",
   "main": "index.js",
   "scripts": {
-    "test": "mocha-webpack --colors --webpack-config webpack.config-test.js \"src/**/*.test.js\""
+    "test": "mocha-webpack --growl \"src/**/*.test.js\" && npm run clean",
+    "clean": "rm -rf .tmp",
+    "test:stack": "mocha-webpack --growl \"src/Stack/stack.test.js\"",
+    "test:queue": "mocha-webpack --growl \"src/Queue/queue.test.js\""
   },
   "keywords": [
     "data",
