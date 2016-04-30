@@ -1,4 +1,4 @@
-import Queue from './Queue';
+import Queue from '../Queue/Queue';
 
 class Node {
   constructor(data) {
@@ -39,23 +39,41 @@ export default class Tree {
     }
   }
 
-  contains(callback) {
-    return this.traverseDepthFirst(callback);
+  contains(check) {
+    let foundNode;
+
+    this.traverseDepthFirst((node) => {
+      if (check(node)) { foundNode = node; }
+    });
+
+    return foundNode;
   }
 
   add(data, parentData) {
     const child = new Node(data);
-    let parent;
+    const parentNode = this.contains((node) => node.data === parentData);
 
-    this.contains((node) => {
-      if (node.data === parentData) parent = node;
-    });
-
-    if (parent) {
-      child.parent = parent;
-      parent.children.push(child);
+    if (parentNode) {
+      child.parent = parentNode;
+      parentNode.children.push(child);
     } else {
       throw new Error('Cannot add node to a non-existent parent.');
     }
+  }
+
+  remove(data) {
+    const removeNode = this.contains((node) => node.data === data);
+    const parentNode = removeNode.parent;
+
+    if (parentNode && removeNode) {
+      parentNode.children = parentNode.children
+        .filter((childNode) => childNode.data !== removeNode.data);
+    } else if (!removeNode) {
+      throw new Error('Could not find node to remove');
+    } else {
+      throw new Error('Cannot remove root node of tree');
+    }
+
+    return removeNode;
   }
 }
