@@ -1,4 +1,4 @@
-class Node {
+export class Node {
   constructor(data) {
     this.data = data;
     this.parent = null;
@@ -73,5 +73,24 @@ export default class Tree {
     }
 
     return removeNode;
+  }
+}
+
+/**
+ * Binary Tree
+ */
+export class BinaryNode {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+export function inOrderTraversal(node, callback) {
+  if (node) {
+    inOrderTraversal(node.left);
+    callback(node);
+    inOrderTraversal(node.right);
   }
 }
