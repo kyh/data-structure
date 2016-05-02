@@ -1,5 +1,3 @@
-import Queue from '../Queue/Queue';
-
 class Node {
   constructor(data) {
     this.data = data;
@@ -25,17 +23,17 @@ export default class Tree {
   }
 
   traverseBreadthFirst(callback) {
-    const queue = new Queue();
-    queue.enqueue(this.root);
+    const queue = [];
+    queue.push(this.root);
 
-    let currentNode = queue.dequeue();
+    let currentNode = queue.pop();
     while (currentNode) {
       for (let i = 0; i < currentNode.children.length; i++) {
-        queue.enqueue(currentNode.children[i]);
+        queue.push(currentNode.children[i]);
       }
 
       callback(currentNode);
-      currentNode = queue.dequeue();
+      currentNode = queue.pop();
     }
   }
 
